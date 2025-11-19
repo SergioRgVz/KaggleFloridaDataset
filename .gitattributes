@@ -1,0 +1,5 @@
+test_split.csv filter=lfs diff=lfs merge=lfs -text
+train_split.csv filter=lfs diff=lfs merge=lfs -text
+sample_submission_mean.csv filter=lfs diff=lfs merge=lfs -text
+sample_submission.csv filter=lfs diff=lfs merge=lfs -text
+prediccion-del-valor-de-viviendas-ub.zip filter=lfs diff=lfs merge=lfs -text
