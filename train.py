@@ -6,6 +6,11 @@ print("Cargando datos...")
 train_data = pd.read_csv('data/cleaned_train_split_aux.csv')
 test_data = pd.read_csv('data/cleaned_test_split_aux.csv')
 
+numerical_columns = train_data.select_dtypes(include=[np.number]).columns.tolist()
+numerical_columns
+# df_train_split[[numerical_columns]]
+train_data_numerical = train_data[numerical_columns]
+
 # 2. Seleccionar columnas
 # El usuario pidio usar todas las variables
 # Eliminamos la columna 'id' ya que no aporta informacion predictiva
@@ -27,7 +32,7 @@ print("Preparando datos con todas las variables...")
 # Entrenar solo 1 modelo (LightGBM) como se solicito
 print("Entrenando un solo modelo (GBM) con AutoGluon...")
 predictor = TabularPredictor(label=target).fit(
-    train_data=train_data,
+    train_data=train_data_numerical,
     hyperparameters={'GBM': {}}, # Forzamos a usar solo LightGBM
 )
 
